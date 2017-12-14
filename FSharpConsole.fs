@@ -3,7 +3,6 @@ open System
 open System.Runtime.InteropServices.ComTypes
 
 
-
 let stringInput (input: string): string = Console.ReadLine()
 
 
@@ -30,7 +29,6 @@ let BR = new BobsResponse
     Sure = "Sure."
 
 ) 
-
 
 
 let decideWhichResponse (WhatISay : string) 
