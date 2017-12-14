@@ -5,7 +5,6 @@ open System.Runtime.InteropServices.ComTypes
 
 let stringInput (input: string): string = Console.ReadLine()
 
-
 type WhatISay = {
     Question: string
     Yelling: string
@@ -43,3 +42,15 @@ let decideWhichResponse (WhatISay : string)
 
      
     let response() = Console.WriteLine(decideWhichResponse)
+    
+//     *******************************
+    
+module Leap
+
+let leapYear (year: int) : bool =
+   match year with 
+    | x when x % 4 <> 0 -> false
+    | x when x % 100 = 0 && x % 400 <> 0 -> false
+    | x when x % 4 = 0 && x % 100 <> 0 -> true 
+    | x when x % 400 = 0 -> true 
+    |_-> true
