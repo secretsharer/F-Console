@@ -54,3 +54,28 @@ let leapYear (year: int) : bool =
     | x when x % 4 = 0 && x % 100 <> 0 -> true 
     | x when x % 400 = 0 -> true 
     |_-> true
+
+//************************************
+
+
+
+let parseInt: char -> int = string >> int
+let input = Seq.map parseInt "987654321"
+
+let ifHeadIsLast s conc alt x =
+    match Seq.tryHead s, Seq.tryLast s with 
+        | Some h, Some l -> if h = l then conc h x else alt x
+        | _ -> alt x
+let pairwiseBy nextIdx values =
+   let arr = Array.ofSeq values
+
+   Array.mapi (fun i v -> v, arr.[nextIdx i]) arr
+
+let len = Seq.length input
+let answer = 
+  input 
+    |> pairwiseBy (fun i -> (i + len/2) % len)
+    |> Seq.sumBy (fun (a, b) -> if a = b then a else 0)
+    |> ifHeadIsLast input (fun h x -> h + x) (fun x -> x)
+
+    printfn "%A" answer 
